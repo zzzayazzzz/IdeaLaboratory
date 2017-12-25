@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "602898868305",
+    "firebase_url": "https://equipment-rental-e02a1.firebaseio.com",
+    "project_id": "equipment-rental-e02a1",
+    "storage_bucket": "equipment-rental-e02a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602898868305:android:b9d85465d6bc9e54",
+        "android_client_info": {
+          "package_name": "kz.idealaboratory.equipmentrental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602898868305-0skqkcs176da775gelbjkedbk07fkee6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kz.idealaboratory.equipmentrental",
+            "certificate_hash": "0967a00a2f118a20e1367bb7d8b111cdab34e8f2"
+          }
+        },
+        {
+          "client_id": "602898868305-79eqt039fv1up8tbd7u5e895l7vuk7rb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuo2qT56295Mio5qRBw28LjQpxAAGOhv4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602898868305-79eqt039fv1up8tbd7u5e895l7vuk7rb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602898868305:android:d3de9733b3ba1322",
+        "android_client_info": {
+          "package_name": "kz.idealaboratory.idealaboratory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602898868305-ushr57bovgb6kpvc8svkctpod42m5vhd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kz.idealaboratory.idealaboratory",
+            "certificate_hash": "0967a00a2f118a20e1367bb7d8b111cdab34e8f2"
+          }
+        },
+        {
+          "client_id": "602898868305-79eqt039fv1up8tbd7u5e895l7vuk7rb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuo2qT56295Mio5qRBw28LjQpxAAGOhv4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602898868305-79eqt039fv1up8tbd7u5e895l7vuk7rb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

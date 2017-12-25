@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">IdeaLaboratory</string>
+    <string name="action_settings">Настройки</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec condimentum ante, quis mattis mi. Proin ut rhoncus libero, ac euismod neque. Ut suscipit, enim a facilisis consequat, orci lacus venenatis orci, at ultricies orci nulla sed ex. In condimentum viverra velit, eget feugiat libero imperdiet vel. Aenean pretium, lectus vitae bibendum bibendum, diam turpis convallis eros, quis tristique leo sapien at ipsum. Praesent eu odio id nulla lobortis auctor. Donec eget dolor eget nisl euismod commodo vel a lacus. Quisque ut justo vitae urna pharetra accumsan. Etiam dignissim neque iaculis mauris viverra, blandit rhoncus odio porttitor. Phasellus nibh arcu.</string>
+    <string name="hint_password">пароль</string>
+    <string name="hint_email">email</string>
+    <string name="sign_in">Войти</string>
+    <string name="username_query">Сегодня работает:</string>
+    <string name="hint_username">Ваше имя</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="heading_recent">Техника</string>
+    <string name="heading_my_posts">Персонал</string>
+    <string name="heading_my_top_posts">Прочее</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="menu_logout">Выйти</string>
+    <string-array name="screen_array">
+        <item>Проект</item>
+        <item>Добавить технику</item>
+        <item>Добавить персонал</item>
+        <item>Добавить прочее</item>
+        <item>Таймер</item>
+        <item>Смета</item>
+    </string-array>
+    <string-array name="tech_types_array">
+        <item>Свет</item>
+        <item>Штативы</item>
+        <item>Grip kit</item>
+        <item>Сетки</item>
+        <item>Флаги</item>
+        <item>Рамы</item>
+        <item>Прочее</item>
+        <item>Коммутация</item>
+    </string-array>
+    <string-array name="pers_types_array">
+        <item>Персонал</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="page">Page:</string>
+
+</resources>
