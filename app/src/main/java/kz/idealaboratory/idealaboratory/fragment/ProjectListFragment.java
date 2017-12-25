@@ -1,5 +1,6 @@
 package kz.idealaboratory.idealaboratory.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -50,6 +51,7 @@ public class ProjectListFragment extends Fragment implements View.OnClickListene
     private FirebaseRecyclerAdapter<Project, ProjectViewHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
+    private ProgressDialog dialog;
 
     public ProjectListFragment() {}
 
@@ -69,6 +71,11 @@ public class ProjectListFragment extends Fragment implements View.OnClickListene
         super.onCreateView(inflater, container, savedInstanceState);
 
         View rootView = inflater.inflate(R.layout.fragment_all_projects, container, false);
+
+        dialog = new ProgressDialog(getActivity());
+        dialog.setTitle("Подождите");
+        dialog.setMessage("Идет загрузка проектов...");
+        dialog.show();
 
         newProjectButton = (Button) rootView.findViewById(R.id.new_project_button);
         newProjectButton.setOnClickListener(this);
@@ -107,6 +114,7 @@ public class ProjectListFragment extends Fragment implements View.OnClickListene
 
         // Set up FirebaseRecyclerAdapter with the Query
 
+
         Query projectQuery = getQuery(mDatabase);
 
         projectQuery = projectQuery.getRef();
@@ -136,6 +144,7 @@ public class ProjectListFragment extends Fragment implements View.OnClickListene
 
                 // Bind Post to ViewHolder, setting OnClickListener
                 viewHolder.bindToProject(model);
+                dialog.dismiss();
             }
         };
         mRecycler.setAdapter(mAdapter);
