@@ -16,9 +16,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-import kz.idealaboratory.idealaboratory.R;
 import kz.idealaboratory.idealaboratory.PersDetailActivity;
-import kz.idealaboratory.idealaboratory.models.Pers;
+import kz.idealaboratory.idealaboratory.R;
+import kz.idealaboratory.idealaboratory.models.Item;
 import kz.idealaboratory.idealaboratory.view.SlidingTabLayout;
 import kz.idealaboratory.idealaboratory.viewholder.PersViewHolder;
 
@@ -76,7 +76,7 @@ public class ScreenPers extends Fragment {
         public Object instantiateItem(ViewGroup container, final int mPosition) {
             DatabaseReference mDatabase;
 
-             FirebaseRecyclerAdapter<Pers, PersViewHolder> mAdapter;
+             FirebaseRecyclerAdapter<Item, PersViewHolder> mAdapter;
              RecyclerView mRecycler;
              LinearLayoutManager mManager;
 
@@ -97,10 +97,10 @@ public class ScreenPers extends Fragment {
 
             Query persQuery = getQuery(mDatabase, mPosition + 1);
 
-            mAdapter = new FirebaseRecyclerAdapter<Pers, PersViewHolder>(Pers.class, R.layout.item_pers,
+            mAdapter = new FirebaseRecyclerAdapter<Item, PersViewHolder>(Item.class, R.layout.item_pers,
                     PersViewHolder.class, persQuery) {
                 @Override
-                protected void populateViewHolder(final PersViewHolder viewHolder, final Pers model, final int position) {
+                protected void populateViewHolder(final PersViewHolder viewHolder, final Item model, final int position) {
                     final DatabaseReference persRef = getRef(position);
                     // Set click listener for the whole post view
                     final String persKey = persRef.getKey();

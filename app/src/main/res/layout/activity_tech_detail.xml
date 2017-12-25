@@ -52,6 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
+                    android:id="@+id/plus_tech"
                     android:text="+"
                     />
 
@@ -59,6 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
+                    android:id="@+id/minus_tech"
                     android:text="-"
                     />
 
@@ -68,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Добавить"
+            android:id="@+id/add_tech"
             android:textAllCaps="false"
             android:layout_marginTop="5dp"
 

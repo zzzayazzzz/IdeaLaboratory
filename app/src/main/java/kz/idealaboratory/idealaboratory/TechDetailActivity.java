@@ -1,5 +1,6 @@
 package kz.idealaboratory.idealaboratory;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import kz.idealaboratory.idealaboratory.models.Tech;
+import kz.idealaboratory.idealaboratory.models.Item;
 
 public class TechDetailActivity extends BaseActivity implements View.OnClickListener {
 
@@ -21,6 +22,7 @@ public class TechDetailActivity extends BaseActivity implements View.OnClickList
 
     public static final String EXTRA_TECH_KEY = "tech_key";
     public static final String EXTRA_TECH_TYPE = "tech_type";
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
 
     private DatabaseReference mTechReference;
     //private DatabaseReference mCommentsReference;
@@ -35,13 +37,15 @@ public class TechDetailActivity extends BaseActivity implements View.OnClickList
     private TextView mShiftField;
     private Button mPlusButton;
     private Button mMinusButton;
+    private Button addTech;
+    private int count;
     //private RecyclerView mCommentsRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tech_detail);
-
+        count = 0;
         // Get post key from intent
         mTechKey = getIntent().getStringExtra(EXTRA_TECH_KEY);
         if (mTechKey == null) {
@@ -61,6 +65,9 @@ public class TechDetailActivity extends BaseActivity implements View.OnClickList
         mCountView = (TextView) findViewById(R.id.tech_count);
         mHourlyView = (TextView) findViewById(R.id.tech_hourly);
         mShiftField = (TextView) findViewById(R.id.tech_shift);
+        addTech = (Button) findViewById(R.id.add_tech);
+
+        addTech.setOnClickListener(this);
         //TODO
         //mPlusButton = (Button) findViewById(R.id.button_tech_plus);
         //mMinusButton = (Button) findViewById(R.id.button_tech_minus);
@@ -80,13 +87,13 @@ public class TechDetailActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
-                Tech tech = dataSnapshot.getValue(Tech.class);
+                Item item = dataSnapshot.getValue(Item.class);
                 // [START_EXCLUDE]
-                Log.d(TAG, tech.Name);
-                mNameView.setText(tech.Name);
-                mHourlyView.setText("Цена за час: " + tech.Hourly);
-                mShiftField.setText("Цена за смену: " + tech.Shift);
-                mCountView.setText("Кол-во: " + tech.count);
+                Log.d(TAG, item.Name);
+                mNameView.setText(item.Name);
+                mHourlyView.setText("Цена за час: " + item.Hourly);
+                mShiftField.setText("Цена за смену: " + item.Shift);
+                mCountView.setText("Кол-во: " + item.count);
                 // [END_EXCLUDE]
             }
 
@@ -123,10 +130,24 @@ public class TechDetailActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        /*
-        if (i == R.id.button_post_comment) {
-            postComment();
+        if (i == R.id.add_tech) {
+            addTech();
+        } else if (i == R.id.plus_tech) {
+            count++;
+        } else if (i == R.id.minus_tech) {
+            count++;
         }
-        */
+
+    }
+
+    private void addTech() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+
+        String projectKey = prefs.getString("key", "defaultStringIfNothingFound");
+        Toast.makeText(this, FirebaseDatabase.getInstance().getReference().getRef().child("Project").child(projectKey).toString(), Toast.LENGTH_SHORT).show();
+
+//        FirebaseDatabase.getInstance().getReference().getRef().child("Project").child(projectKey).toString();
+
+
     }
 }

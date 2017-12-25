@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import kz.idealaboratory.idealaboratory.R;
-import kz.idealaboratory.idealaboratory.models.Pers;
+import kz.idealaboratory.idealaboratory.models.Item;
 
 public class PersViewHolder extends RecyclerView.ViewHolder {
 
@@ -24,7 +24,7 @@ public class PersViewHolder extends RecyclerView.ViewHolder {
         shiftView = (TextView) itemView.findViewById(R.id.pers_shift);
     }
 
-    public void bindToPers(Pers pers) {
+    public void bindToPers(Item pers) {
         nameView.setText(pers.Name);
 
 //        hourlyView.setText(pers.Hourly);

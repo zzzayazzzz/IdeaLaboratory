@@ -18,16 +18,16 @@ import com.google.firebase.database.Query;
 
 import kz.idealaboratory.idealaboratory.R;
 import kz.idealaboratory.idealaboratory.TechDetailActivity;
-import kz.idealaboratory.idealaboratory.models.Tech;
+import kz.idealaboratory.idealaboratory.models.Item;
 import kz.idealaboratory.idealaboratory.view.SlidingTabLayout;
 import kz.idealaboratory.idealaboratory.viewholder.TechViewHolder;
 
-public class ScreenTech extends Fragment {
+public class ScreenLoadTech extends Fragment {
 
     private SlidingTabLayout mSlidingTabLayout;
     private ViewPager mViewPager;
     private String[] mTechTitles;
-    public ScreenTech() {
+    public ScreenLoadTech() {
     }
 
     @Override
@@ -77,7 +77,7 @@ public class ScreenTech extends Fragment {
         public Object instantiateItem(ViewGroup container, final int mPosition) {
             DatabaseReference mDatabase;
 
-            FirebaseRecyclerAdapter<Tech, TechViewHolder> mAdapter;
+            FirebaseRecyclerAdapter<Item, TechViewHolder> mAdapter;
             RecyclerView mRecycler;
             LinearLayoutManager mManager;
 
@@ -98,10 +98,10 @@ public class ScreenTech extends Fragment {
 
             Query techQuery = getQuery(mDatabase, mPosition + 1);
 
-            mAdapter = new FirebaseRecyclerAdapter<Tech, TechViewHolder>(Tech.class, R.layout.item_tech,
+            mAdapter = new FirebaseRecyclerAdapter<Item, TechViewHolder>(Item.class, R.layout.item_tech,
                     TechViewHolder.class, techQuery) {
                 @Override
-                protected void populateViewHolder(final TechViewHolder viewHolder, final Tech model, final int position) {
+                protected void populateViewHolder(final TechViewHolder viewHolder, final Item model, final int position) {
                     final DatabaseReference techRef = getRef(position);
                     // Set click listener for the whole post view
                     final String techKey = techRef.getKey();
@@ -116,7 +116,7 @@ public class ScreenTech extends Fragment {
                             startActivity(intent);
                         }
                     });
-                    // Bind Tech to ViewHolder, setting OnClickListener
+                    // Bind Item to ViewHolder, setting OnClickListener
                     viewHolder.bindToTech(model);
                 }
             };

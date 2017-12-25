@@ -75,6 +75,8 @@ public class ProjectListFragment extends Fragment implements View.OnClickListene
         dialog = new ProgressDialog(getActivity());
         dialog.setTitle("Подождите");
         dialog.setMessage("Идет загрузка проектов...");
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
         dialog.show();
 
         newProjectButton = (Button) rootView.findViewById(R.id.new_project_button);

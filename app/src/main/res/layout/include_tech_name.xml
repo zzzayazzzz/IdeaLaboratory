@@ -14,6 +14,6 @@
         android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
         android:textStyle="bold"
-        tools:text="some tech name" />
+        tools:text="some item name" />
 
 </LinearLayout>

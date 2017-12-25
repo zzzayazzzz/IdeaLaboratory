@@ -36,7 +36,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import kz.idealaboratory.idealaboratory.fragment.RecentTechFragment;
 import kz.idealaboratory.idealaboratory.fragment.ScreenPers;
-import kz.idealaboratory.idealaboratory.fragment.ScreenTech;
+import kz.idealaboratory.idealaboratory.fragment.ScreenLoadTech;
 import kz.idealaboratory.idealaboratory.fragment.ScreenThree;
 import kz.idealaboratory.idealaboratory.fragment.ScreenTwo;
 
@@ -156,7 +156,7 @@ public class MainActivity extends BaseActivity {
                 fragment = new ScreenTwo();
                 break;
             case 1:
-                fragment = new ScreenTech();
+                fragment = new ScreenLoadTech();
                 break;
             case 2:
                 fragment = new ScreenPers();
@@ -168,6 +168,9 @@ public class MainActivity extends BaseActivity {
                 fragment = new ScreenThree();
                 break;
             case 5:
+                fragment = new RecentTechFragment();
+                break;
+            case 6:
                 fragment = new RecentTechFragment();
                 break;
             default:

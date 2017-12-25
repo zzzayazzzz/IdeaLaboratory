@@ -13,7 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import kz.idealaboratory.idealaboratory.models.Pers;
+import kz.idealaboratory.idealaboratory.models.Item;
 
 public class PersDetailActivity extends BaseActivity implements View.OnClickListener {
 
@@ -80,7 +80,7 @@ public class PersDetailActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
-                Pers pers = dataSnapshot.getValue(Pers.class);
+                Item pers = dataSnapshot.getValue(Item.class);
                 // [START_EXCLUDE]
                 Log.d(TAG, pers.Name);
                 mNameView.setText(pers.Name);

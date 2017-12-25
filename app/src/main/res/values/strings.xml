@@ -17,9 +17,10 @@
     <string name="menu_logout">Выйти</string>
     <string-array name="screen_array">
         <item>Проект</item>
-        <item>Добавить технику</item>
+        <item>Загрузить технику</item>
         <item>Добавить персонал</item>
         <item>Добавить прочее</item>
+        <item>Выгрузить технику</item>
         <item>Таймер</item>
         <item>Смета</item>
     </string-array>

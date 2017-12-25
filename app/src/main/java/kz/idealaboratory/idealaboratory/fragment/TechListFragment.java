@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import kz.idealaboratory.idealaboratory.R;
-import kz.idealaboratory.idealaboratory.models.Tech;
+import kz.idealaboratory.idealaboratory.models.Item;
 import kz.idealaboratory.idealaboratory.viewholder.TechViewHolder;
 
 public abstract class TechListFragment extends Fragment {
@@ -27,7 +27,7 @@ public abstract class TechListFragment extends Fragment {
     private DatabaseReference mDatabase;
     // [END define_database_reference]
 
-    private FirebaseRecyclerAdapter<Tech, TechViewHolder> mAdapter;
+    private FirebaseRecyclerAdapter<Item, TechViewHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
 
@@ -67,10 +67,10 @@ public abstract class TechListFragment extends Fragment {
         techQuery = techQuery.getRef().child("1");
         Toast.makeText(getContext(), techQuery.toString() , Toast.LENGTH_SHORT).show();
 
-        mAdapter = new FirebaseRecyclerAdapter<Tech, TechViewHolder>(Tech.class, R.layout.item_tech,
+        mAdapter = new FirebaseRecyclerAdapter<Item, TechViewHolder>(Item.class, R.layout.item_tech,
                 TechViewHolder.class, techQuery) {
             @Override
-            protected void populateViewHolder(final TechViewHolder viewHolder, final Tech model, final int position) {
+            protected void populateViewHolder(final TechViewHolder viewHolder, final Item model, final int position) {
                 final DatabaseReference techRef = getRef(position);
 
                 // Set click listener for the whole post view

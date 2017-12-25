@@ -8,20 +8,21 @@ import java.util.Map;
 
 // [START post_class]
 @IgnoreExtraProperties
-public class Tech {
+public class Item {
 
     public String Name;
     public int Hourly;
     public int Shift;
     public int Type;
     public int count = 0;
-    public Boolean isHourly;
+    public boolean isPrice;
 
-    public Tech() {
+    public Item() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public Tech(String name, int hourly, int shift, int Type) {
+    public Item(String name, int hourly, int shift, int Type, boolean isPrice) {
+        this.isPrice = isPrice;
         this.Name = name;
         this.Hourly = hourly;
         this.Shift = shift;

@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import kz.idealaboratory.idealaboratory.R;
-import kz.idealaboratory.idealaboratory.models.Tech;
+import kz.idealaboratory.idealaboratory.models.Item;
 
 public class TechViewHolder extends RecyclerView.ViewHolder {
 
@@ -24,13 +24,13 @@ public class TechViewHolder extends RecyclerView.ViewHolder {
         shiftView = (TextView) itemView.findViewById(R.id.tech_shift);
     }
 
-    public void bindToTech(Tech tech) {
-        nameView.setText(tech.Name);
+    public void bindToTech(Item item) {
+        nameView.setText(item.Name);
 
-//        hourlyView.setText(tech.Hourly);
+//        hourlyView.setText(item.Hourly);
         //TODO
-        //countView.setText(String.valueOf(tech.count));
-//        shiftView.setText(tech.Shift);
+        //countView.setText(String.valueOf(item.count));
+//        shiftView.setText(item.Shift);
 
         //starView.setOnClickListener(starClickListener);
     }
