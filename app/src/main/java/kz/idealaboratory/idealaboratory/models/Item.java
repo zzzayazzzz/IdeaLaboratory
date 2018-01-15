@@ -29,6 +29,7 @@ public class Item {
         this.Type = Type;
     }
 
+
     // [START post_to_map]
     @Exclude
     public Map<String, Object> toMap() {
@@ -38,6 +39,14 @@ public class Item {
         result.put("Shift", Shift);
         result.put("Type", Type);
         return result;
+    }
+
+    public void setCount(int num){
+        this.count = num;
+    }
+
+    public int getCount(){
+        return this.count;
     }
     // [END post_to_map]
 

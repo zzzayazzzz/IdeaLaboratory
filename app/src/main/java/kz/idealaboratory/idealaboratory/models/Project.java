@@ -21,6 +21,7 @@ public class Project {
     public String title;
     public String timing;
     public ArrayList<String> usernames;
+    public ArrayList<Item> projTech;
     private int isClosed;
 
     public Project(){}

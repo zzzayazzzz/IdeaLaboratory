@@ -39,10 +39,13 @@ public class TechDetailActivity extends BaseActivity implements View.OnClickList
     private Button mMinusButton;
     private Button addTech;
     private int count;
+    private Item item;
+
     //private RecyclerView mCommentsRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        count = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tech_detail);
         count = 0;
@@ -67,10 +70,13 @@ public class TechDetailActivity extends BaseActivity implements View.OnClickList
         mShiftField = (TextView) findViewById(R.id.tech_shift);
         addTech = (Button) findViewById(R.id.add_tech);
 
+
+        mPlusButton = (Button) findViewById(R.id.plus_tech);
+        mMinusButton = (Button) findViewById(R.id.minus_tech);
+
         addTech.setOnClickListener(this);
-        //TODO
-        //mPlusButton = (Button) findViewById(R.id.button_tech_plus);
-        //mMinusButton = (Button) findViewById(R.id.button_tech_minus);
+        mPlusButton.setOnClickListener(this);
+        mMinusButton.setOnClickListener(this);
 
       //  mCommentButton.setOnClickListener(this);
       //  mCommentsRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -86,25 +92,21 @@ public class TechDetailActivity extends BaseActivity implements View.OnClickList
         ValueEventListener techListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                Item item = dataSnapshot.getValue(Item.class);
-                // [START_EXCLUDE]
+                // Get Tech object and use the values to update the UI
+                item = dataSnapshot.getValue(Item.class);
+
                 Log.d(TAG, item.Name);
                 mNameView.setText(item.Name);
                 mHourlyView.setText("Цена за час: " + item.Hourly);
                 mShiftField.setText("Цена за смену: " + item.Shift);
-                mCountView.setText("Кол-во: " + item.count);
-                // [END_EXCLUDE]
+                mCountView.setText("Кол-во: " + count);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // [START_EXCLUDE]
                 Toast.makeText(TechDetailActivity.this, "Failed to load tech.",
                         Toast.LENGTH_SHORT).show();
-                // [END_EXCLUDE]
             }
         };
         mTechReference.addValueEventListener(techListener);
@@ -134,8 +136,10 @@ public class TechDetailActivity extends BaseActivity implements View.OnClickList
             addTech();
         } else if (i == R.id.plus_tech) {
             count++;
+            mCountView.setText("Кол-во: " + count);
         } else if (i == R.id.minus_tech) {
-            count++;
+            count--;
+            mCountView.setText("Кол-во: " + count);
         }
 
     }
@@ -143,7 +147,36 @@ public class TechDetailActivity extends BaseActivity implements View.OnClickList
     private void addTech() {
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
 
-        String projectKey = prefs.getString("key", "defaultStringIfNothingFound");
+        final String projectKey = prefs.getString("key", "defaultStringIfNothingFound");
+
+        FirebaseDatabase.getInstance().getReference().getRef().child("Projects").child(projectKey).child("Tech").child(mTechKey)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        if (dataSnapshot.getValue() != null){
+                            item = dataSnapshot.getValue(Item.class);
+                        }
+                        DatabaseReference newItemRef = FirebaseDatabase.getInstance().getReference().getRef().child("Projects").child(projectKey)
+                                .child("Tech").child(mTechKey).getRef();
+
+
+                        int dalb = item.getCount();
+                        dalb += count;
+                        if (dalb < 0) dalb = 0;
+                        item.setCount(dalb);
+
+                        newItemRef.setValue(item);
+
+                        newItemRef.push();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
         Toast.makeText(this, FirebaseDatabase.getInstance().getReference().getRef().child("Project").child(projectKey).toString(), Toast.LENGTH_SHORT).show();
 
 //        FirebaseDatabase.getInstance().getReference().getRef().child("Project").child(projectKey).toString();
