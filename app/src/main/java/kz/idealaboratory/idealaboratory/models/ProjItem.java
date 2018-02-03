@@ -72,5 +72,9 @@ public class ProjItem {
     public void setItemType(String itemType) {
         this.itemType = itemType;
     }
+    //TODO calculatePrice (???) )))))
+    public void calculatePrice() {
+        this.endPrice = (int)(this.endTime - this.startTime) * this.item.getHourly();
+    }
 }
 // [END post_class]

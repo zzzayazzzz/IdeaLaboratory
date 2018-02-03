@@ -48,6 +48,14 @@ public class Item {
     public int getCount(){
         return this.count;
     }
+
+    public int getHourly(){
+        return this.Hourly;
+    }
+
+    public int getShift(){
+        return this.Shift;
+    }
     // [END post_to_map]
 
 }
